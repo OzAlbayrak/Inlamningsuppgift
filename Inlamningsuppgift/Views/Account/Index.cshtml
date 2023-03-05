@@ -1,0 +1,22 @@
+﻿@model IndexViewModel
+
+<h1>My User Page</h1>
+<div>@Model.UserAccount.FirstName @Model.UserAccount.LastName</div>
+<div>@Model.UserAccount.Email</div>
+<img src="~/images/profiles/@Model.UserAccount.ImageName" alt="" />
+<p></p>
+<a asp-controller="Account" asp-action="SignOut">Sign Out</a>
+<p></p>
+<button class="btn-theme mt-3" onclick="location.href='@Url.Action("Edit", "Account")'">Edit User Info</button>
+@{
+    if (User.IsInRole("Administrator"))
+    {
+        <button class="btn-theme mt-3" onclick="location.href='@Url.Action("UserManagement", "Admin")'">Edit User Info Admin</button>
+        <button class="btn-theme mt-3" onclick="location.href='@Url.Action("AddProduct", "ProductManager")'">Add Product</button>
+    }
+
+    if (User.IsInRole("ProductManager"))
+    {
+        <button class="btn-theme mt-3" onclick="location.href='@Url.Action("AddProduct", "ProductManager")'">Add Product</button>
+    }
+}

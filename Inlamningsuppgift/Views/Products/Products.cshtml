@@ -1,0 +1,19 @@
+﻿@*@model HomeViewModel
+@{
+    ViewData["Title"] = "Product";
+}
+@foreach (var prod in Model.Product)
+{
+    if (prod != null)
+    {
+        var pr = Model.Product.FirstOrDefault(x => x.Name == prod.Name);
+        if (pr != null)
+        {
+            <div>@prod.Name @prod.Price</div>
+        } 
+    }
+    else
+    {
+        <div>Name Price></div>
+    }
+}*@

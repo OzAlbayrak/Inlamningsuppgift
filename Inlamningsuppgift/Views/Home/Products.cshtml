@@ -1,0 +1,83 @@
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Product";
+}
+<!-- featured products -->
+<section class="featured-products">
+    <div class="container">
+        <div class="title">Featured Products</div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-card-img">
+                    @foreach (var prod in Model.Product)
+                    {
+                        if (prod != null)
+                        {
+                            var pr = Model.Product.FirstOrDefault(x => x.Name == prod.Name);
+                            if (pr != null)
+                            {
+                                <img src="~/images/products/@prod.ProductImageName" alt="">
+                            }
+                        }
+                        else
+                        {
+                            <img src="~/images/products/blue-tshirt.png" alt="">
+                        }
+                    }
+                    <div class="product-card-menu">
+                        <nav class="menu-icons">
+                            <a class="menu-link" href="#"><i class="fa-regular fa-code-compare"></i></a>
+                            <a class="menu-link" href="#"><i class="fa-regular fa-heart"></i></a>
+                            <a class="menu-link" href="#"><i class="fa-regular fa-bag-shopping"></i></a>
+                        </nav>
+                        <a href="#" class="btn-theme">QUICK VIEW</a>
+                    </div>
+
+
+                </div>
+                <div class="product-card-body">
+                    @foreach (var prod in Model.Product)
+                    {
+                        if (prod != null)
+                        {
+                            var pr = Model.Product.FirstOrDefault(x => x.Name == prod.Name);
+                            if (pr != null)
+                            {
+                                <p class="product-card-category">@prod.Category</p>
+                                <p class="product-card-title">@prod.Name</p>
+                            }
+                        }
+                        else
+                        {
+                            <p class="product-card-category">T-shirts</p>
+                            <p class="product-card-title">Blue Modern T-Shirt</p>
+                        }
+                    }
+                    <div class="product-card-rating">
+                        <i class="fa-solid fa-sharp fa-star"></i>
+                        <i class="fa-solid fa-sharp fa-star"></i>
+                        <i class="fa-solid fa-sharp fa-star"></i>
+                        <i class="fa-solid fa-sharp fa-star"></i>
+                        <i class="fa-regular fa-sharp fa-star"></i>
+                    </div>
+                    @foreach (var prod in Model.Product)
+                    {
+                        if (prod != null)
+                        {
+                            var pr = Model.Product.FirstOrDefault(x => x.Name == prod.Name);
+                            if (pr != null)
+                            {
+                                <p class="product-card-price">@prod.Price</p>
+                            }
+                        }
+                        else
+                        {
+                            <p class="product-card-price">$15.00</p>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
